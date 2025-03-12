@@ -16,7 +16,7 @@ char grille[tailleX][tailleY];
 char generationAnimaux()
 {
     char x = '_'; // Caractère de test symbolisant l'animal -> à modifier
-    if (rand() % 100 <= 10) {
+    if (rand() % 100 <= 25) {
         if (rand() % 2 == 1) {
             x = 'P';
         } else {
@@ -47,7 +47,14 @@ void Grid()
 // Main
 int main()
 {
+    char stop;
     srand(time(NULL));
     Grid();
+
+    while (stop != 'y') {   // OR animaux présents = null
+        // Code de traitement des animaux
+        cout << "Continuer le jeu ? y/n" << endl;
+        cin >> stop;
+    }
     // cout << "OK" << endl;
 }
