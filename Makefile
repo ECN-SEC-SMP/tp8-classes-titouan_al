@@ -1,6 +1,6 @@
 all: main.out
 
-main.out: main.o 
+main.out: main.o Attaque.o
 	g++ -o main.out main.o Attaque.o
 
 main.o: main.cpp
