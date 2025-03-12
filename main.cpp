@@ -9,6 +9,7 @@
 int tailleX = 10;
 int tailleY = 10;
 
+// Création grille 10x10
 void Grid()
 {
     // Création grille 10x10
@@ -29,6 +30,7 @@ void Grid()
     cout << endl;
 }
 
+// Main
 int main()
 {
     srand(time(NULL));
