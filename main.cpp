@@ -12,6 +12,20 @@ const int tailleY = 10;
 // Création grille 10x10
 char grille[tailleX][tailleY];
 
+//  Génération animaux ||A MODIFIER AVEC CLASSE ANIMAL||
+char generationAnimaux()
+{
+    char x = '_'; // Caractère de test symbolisant l'animal -> à modifier
+    if (rand() % 100 <= 25) {
+        if (rand() % 2 == 1) {
+            x = 'P';
+        } else {
+            x = 'O';
+        }
+    }
+    return x;
+}
+
 // Création grille 10x10
 void Grid()
 {
@@ -29,20 +43,7 @@ void Grid()
     }
     cout << endl;
 }
-// ours et pierres
-//  Génération animaux ||A MODIFIER AVEC CLASSE ANIMAL||
-char generationAnimaux()
-{
-    char x = '_'; // Caractère de test symbolisant l'animal -> à modifier
-    if (rand() % 100 <= 25) {
-        if (rand() % 2 == 1) {
-            x = 'P';
-        } else {
-            x = 'O';
-        }
-    }
-    return x;
-}
+
 // Main
 int main()
 {
