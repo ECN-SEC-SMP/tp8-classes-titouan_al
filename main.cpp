@@ -26,6 +26,7 @@ void Grid()
             cout << "|" << grille[i][j];
         }
     }
+    cout << endl;
 }
 
 int main()
