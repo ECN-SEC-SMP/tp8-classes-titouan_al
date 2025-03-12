@@ -24,7 +24,7 @@ int main() {
     for (int i = 0; i > tailleX; i++){
         cout << "__" << endl;
         for (int j = 0; j > tailleY; j++) {
-            grille[i][j] = ' ';
+            grille[i][j] = '0';
             cout << "|" << grille[i][j];
         }
     }
