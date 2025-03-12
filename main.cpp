@@ -34,6 +34,6 @@ void Grid()
 int main()
 {
     srand(time(NULL));
-
+    Grid();
     // cout << "OK" << endl;
 }
