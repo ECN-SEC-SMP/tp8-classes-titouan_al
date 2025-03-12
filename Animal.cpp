@@ -51,6 +51,6 @@ void Animal::setVivant(bool v) {
 }
 
 bool Animal::attaque(Animal &a) {
-    return typeAttaque.resoudreAttaque(a);
+    return typeAttaque.resoudreAttaque(a.typeAttaque);
 }
 
