@@ -51,7 +51,7 @@ int main()
     srand(time(NULL));
     Grid();
 
-    while (stop != 'y') {   // OR animaux présents = null
+    while (stop != 'n') {   // OR animaux présents = null
         // Code de traitement des animaux
         cout << "Continuer le jeu ? y/n" << endl;
         cin >> stop;
