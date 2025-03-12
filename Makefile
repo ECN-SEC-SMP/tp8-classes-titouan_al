@@ -1,6 +1,6 @@
 all: main.out
 
-main.out: main.o Attaque.o
+main.out: main.o Attaque.o Ours.o Animal.o
 	g++ -o main.out main.o Attaque.o Ours.o
 
 main.o: main.cpp
