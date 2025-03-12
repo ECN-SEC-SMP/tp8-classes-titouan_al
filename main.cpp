@@ -20,5 +20,5 @@ int main() {
             cout << grille[i][j];
         }
     }
-
+    cout << "OK";
 }
