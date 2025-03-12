@@ -19,7 +19,7 @@ int main() {
 
     // Affichage lignes
     for (int i = 0; i < tailleX; i++){
-        cout << endl << "__________";
+        cout << endl;
 
         // Affichage colonnes
         for (int j = 0; j < tailleY; j++) {
