@@ -6,26 +6,31 @@
 #include "Attaque.h"
 
 // Taille maximales X et Y du plateau de jeu
-int tailleX = 9;
-int tailleY = 9;
+int tailleX = 10;
+int tailleY = 10;
 
-
-
-int main() {
-    srand(time(NULL));
-
+void Grid()
+{
     // Création grille 10x10
     char grille[tailleX][tailleY];
 
     // Affichage lignes
-    for (int i = 0; i < tailleX; i++){
+    for (int i = 0; i < tailleX; i++)
+    {
         cout << endl;
 
         // Affichage colonnes
-        for (int j = 0; j < tailleY; j++) {
-            grille[i][j] = ' ';
+        for (int j = 0; j < tailleY; j++)
+        {
+            grille[i][j] = '  ';
             cout << "|" << grille[i][j];
         }
     }
+}
+
+int main()
+{
+    srand(time(NULL));
+
     // cout << "OK" << endl;
 }
