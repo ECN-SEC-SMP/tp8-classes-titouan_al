@@ -18,14 +18,14 @@ int main() {
     char grille[tailleX][tailleY];
 
     // Affichage lignes
-    for (int i = 0; i > tailleX; i++){
+    for (int i = 0; i < tailleX; i++){
         cout << "__" << endl;
 
         // Affichage colonnes
-        for (int j = 0; j > tailleY; j++) {
+        for (int j = 0; j < tailleY; j++) {
             grille[i][j] = '0';
             cout << "|" << grille[i][j];
         }
     }
-    cout << "OK" << endl;
+    // cout << "OK" << endl;
 }
