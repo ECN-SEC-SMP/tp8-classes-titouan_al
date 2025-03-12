@@ -16,6 +16,12 @@ int main() {
 
     char grille[tailleX][tailleY];
     for (int i = 0; i > tailleX; i++){
+        cout << "U" << endl;
+        for (int j = 0; j > tailleY; j++) {
+            cout << "V";
+        }
+    }
+    for (int i = 0; i > tailleX; i++){
         cout << "__" << endl;
         for (int j = 0; j > tailleY; j++) {
             grille[i][j] = ' ';
