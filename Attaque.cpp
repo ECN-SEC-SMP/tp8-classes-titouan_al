@@ -26,7 +26,7 @@ int Attaque::getAttaque() const
 bool Attaque::resoudreAttaque(Attaque &a) const
 {
     // Comparaison des 3 cas ou la fonction peut renvoyer true, sinon false
-    if (this->type == 0 && a->type == 1 || this->type == 1 && a == 2 || this->type ==2 && a == 0)
+    if (this->type == 0 && a.type == 2 || this->type == 2 && a.type == 1 || this->type == 1 && a.type == 0)
     {
         return true;
     }
