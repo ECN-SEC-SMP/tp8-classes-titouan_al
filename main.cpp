@@ -13,7 +13,7 @@ int tailleY = 10;
 void Grid()
 {
     // Création grille 10x10
-    string grille[tailleX][tailleY];
+    char grille[tailleX][tailleY];
 
     // Affichage lignes
     for (int i = 0; i < tailleX; i++)
@@ -23,7 +23,7 @@ void Grid()
         // Affichage colonnes
         for (int j = 0; j < tailleY; j++)
         {
-            grille[i][j] = '  ';
+            grille[i][j] = '_';
             cout << "|" << grille[i][j];
         }
     }
