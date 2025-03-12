@@ -16,7 +16,7 @@ char grille[tailleX][tailleY];
 char generationAnimaux()
 {
     char x = '_'; // Caractère de test symbolisant l'animal -> à modifier
-    if (rand() % 100 <= 25) {
+    if (rand() % 100 <= 10) {
         if (rand() % 2 == 1) {
             x = 'P';
         } else {
