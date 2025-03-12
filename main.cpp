@@ -14,15 +14,14 @@ int tailleY = 9;
 int main() {
     srand(time(NULL));
 
+    // Création grille 10x10
     char grille[tailleX][tailleY];
-    for (int i = 0; i > tailleX; i++){
-        cout << "U" << endl;
-        for (int j = 0; j > tailleY; j++) {
-            cout << "V";
-        }
-    }
+
+    // Affichage lignes
     for (int i = 0; i > tailleX; i++){
         cout << "__" << endl;
+
+        // Affichage colonnes
         for (int j = 0; j > tailleY; j++) {
             grille[i][j] = '0';
             cout << "|" << grille[i][j];
