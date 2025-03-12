@@ -19,11 +19,11 @@ int main() {
 
     // Affichage lignes
     for (int i = 0; i < tailleX; i++){
-        cout << "__" << endl;
+        cout << endl << "__________" << endl;
 
         // Affichage colonnes
         for (int j = 0; j < tailleY; j++) {
-            grille[i][j] = '0';
+            grille[i][j] = ' ';
             cout << "|" << grille[i][j];
         }
     }
