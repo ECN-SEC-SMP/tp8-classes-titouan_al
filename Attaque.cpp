@@ -10,7 +10,7 @@ Attaque::Attaque()
     this->type = rand() % 2;
 }
 
-// C
+// Création attaque spécifique (valeur sélectionnée)
 Attaque::Attaque(int a)
 {
     this->type = a;
@@ -25,7 +25,8 @@ int Attaque::getAttaque() const
 // Vérification de l'attaque, renvoie true si l'attaque est réussie, sinon false
 bool Attaque::resoudreAttaque(Attaque &a) const
 {
-    if (this->type == 0)
+    // Comparaison des 3 cas ou la fonction peut renvoyer true, sinon false
+    if (this->type == 0 && a->type == 1 || this->type == 1 && a == 2 || this->type ==2 && a == 0)
     {
         return true;
     }
