@@ -12,7 +12,7 @@ int tailleY = 10;
 void Grid()
 {
     // Création grille 10x10
-    char grille[tailleX][tailleY];
+    string grille[tailleX][tailleY];
 
     // Affichage lignes
     for (int i = 0; i < tailleX; i++)
