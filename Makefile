@@ -14,3 +14,6 @@ Animal.o: Animal.cpp Animal.h
 
 Ours.o: Ours.cpp Ours.h
 	g++ -c Ours.cpp
+
+Pierre.o: Pierre.cpp Pierre.h
+	g++ -c Pierre.cpp
