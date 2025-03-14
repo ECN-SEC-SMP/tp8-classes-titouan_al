@@ -1,7 +1,7 @@
 all: main.out
 
-main.out: main.o Attaque.o Ours.o Animal.o
-	g++ -o main.out main.o Attaque.o Ours.o
+main.out: main.o Attaque.o Animal.o 
+	g++ -o main.out main.o Attaque.o Animal.o 
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -12,5 +12,5 @@ Attaque.o: Attaque.cpp Attaque.h
 Animal.o: Animal.cpp Animal.h
 	g++ -c Animal.cpp
 
-Ours.o: Ours.cpp Ours.h
-	g++ -c Ours.cpp
+Loup.o:	Loup.cpp Loup.h
+	g++  Loup.cpp 
