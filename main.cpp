@@ -115,8 +115,6 @@ void deplacementAnimaux() // ne marche pas
 void Deplacement() {
     for (Animal *animal : Animaux)
     {
-        //animal->deplace(tailleX, tailleY);
-        //animal->setAttaque();
         // méthodes pour déterminer le type d'animaux et lui affecter le bon caractère
         if (typeid(*animal) == typeid(Loup))
         {
