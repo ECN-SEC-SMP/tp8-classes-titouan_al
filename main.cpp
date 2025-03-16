@@ -23,54 +23,92 @@ char grille[tailleX][tailleY];
 
 vector<Animal *> Animaux;
 
-//  Génération animaux ||A MODIFIER AVEC CLASSE ANIMAL||
-// char generationAnimaux()
-// {
-//     char x = '_'; // Caractère de test symbolisant l'animal -> à modifier
-//     if (rand() % 100 <= 10) {
-//         if (rand() % 2 == 1) {
-//             x = 'P';
-//         } else {
-//             x = 'O';
-//         }
-//     }
-//     return x;
-// }
-
-void CreationAnimaux()
+void CreationAnimaux()  // ne marche pas
 {
     // ajout des animaux
     for (Animal *animal : Animaux)
     {
         animal->deplace(tailleX, tailleY);
         animal->setAttaque();
-        // méthodes pour déterminer le type d'animaux et lui affecter le bon caractère
-        // if (typeid(*animal) == typeid(Loup))
-        // {
-        //     grille[animal->getX()][animal->getY()] = 'L';
-        // }
-        // else if (typeid(*animal) == typeid(Ours))
-        // {
-        //     grille[animal->getX()][animal->getY()] = 'O';
-        // }
-        // else if (typeid(*animal) == typeid(Pierre))
-        // {
-        //     grille[animal->getX()][animal->getY()] = 'P';
-        // }
+        //méthodes pour déterminer le type d'animaux et lui affecter le bon caractère
+        if (typeid(*animal) == typeid(Loup))
+        {
+            grille[animal->getX()][animal->getY()] = 'L';
+        }
+        else if (typeid(*animal) == typeid(Ours))
+        {
+            grille[animal->getX()][animal->getY()] = 'O';
+        }
+        else if (typeid(*animal) == typeid(Pierre))
+        {
+            grille[animal->getX()][animal->getY()] = 'P';
+        }
     }
 }
 
 // Création grille 10x10
 void Grid()
 {
-    // grille vide
+    // grille
+    for (int i = 0; i < tailleX; i++)
+    {
+        for (int j = 0; j < tailleY; j++)
+        {
+            grille[i][j] = '_';
+        }
+    }
+    // Affichage lignes
+    for (int i = 0; i < tailleX; i++)
+    {
+        cout << endl;
+
+        // Affichage colonnes
+        for (int j = 0; j < tailleY; j++)
+        {
+            cout << "|" << grille[i][j];
+        }
+    }
+    cout << endl;
+}
+
+void attaqueAnimaux()
+{
+    for (Animal *animal : Animaux)
+    {
+        animal->getX();
+        animal->getY();
+        // animal->attaque(&animal);
+    }
+}
+void deplacementAnimaux() // ne marche pas
+{
+    for (Animal *animal : Animaux)
+    {
+        animal->deplace(tailleX, tailleY);
+        animal->setAttaque();
+    }
+}
+
+// On appelle la fonction grid() pour générer le tableau, puis on crée les entités sur le plateau
+// On stocke les informations de chaque animaux dans un vecteur de données
+void initialisationAnimaux()
+{
+    /*
+// Déclaration et initialisation d'un objet Loup
+    Animaux.push_back(new Loup(tailleX, tailleY));
+    Animaux.push_back(new Loup(tailleX, tailleY));
+    Animaux.push_back(new Loup(tailleX, tailleY));
+    Animaux.push_back(new Loup(tailleX, tailleY));
+    */
+
+    Grid();
     for (int i = 0; i < tailleX; i++)
     {
         for (int j = 0; j < tailleY; j++)
         {
             if (rand() % 100 <= 25)
             {
-                int animal = rand()%3;
+                int animal = rand() % 3;
                 if (animal == 1)
                 {
                     Animaux.push_back(new Loup(tailleX, tailleY));
@@ -87,66 +125,36 @@ void Grid()
                     grille[i][j] = 'P';
                 }
             }
-            else
-            {
-                grille[i][j] = '_';
-            }
-            //grille[i][j] = '_';
         }
     }
-    // Affichage lignes
-    for (int i = 0; i < tailleX; i++)
-    {
-        cout << endl;
-
-        // Affichage colonnes
-        for (int j = 0; j < tailleY; j++)
-        {
-            // grille[i][j] = generationAnimaux();
-            cout << "|" << grille[i][j];
-        }
-    }
-    cout << endl;
-}
-void attaqueAnimaux()
-{
-    for (Animal *animal : Animaux)
-    {
-        animal->getX();
-        animal->getY();
-        // animal->attaque(&animal);
-    }
-}
-void deplacementAnimaux()
-{
-    for (Animal *animal : Animaux)
-    {
-        animal->deplace(tailleX, tailleY);
-        animal->setAttaque();
-    }
-}
-void initialisationAnimaux()
-{
-    /*
-// Déclaration et initialisation d'un objet Loup
-    Animaux.push_back(new Loup(tailleX, tailleY));
-    Animaux.push_back(new Loup(tailleX, tailleY));
-    Animaux.push_back(new Loup(tailleX, tailleY));
-    Animaux.push_back(new Loup(tailleX, tailleY));
-    */
-
-    Grid();
-    // deplacementAnimaux();
-    // Grid();
 }
 
 int main()
 {
+    char tour;  // Confirmer la fin du jeu ou non
     srand(time(NULL)); // Initialiser le générateur de nombres aléatoires
 
     // Déclaration et initialisation d'un objet Loup
     initialisationAnimaux();
-
+    while (tour != 'n')
+    {
+        //Grid();
+        for (int i = 0; i < tailleX; i++)
+        {
+            cout << endl;
+            for (int j = 0; j < tailleY; j++)
+            {
+                
+                cout << "|" << grille[i][j];
+            }
+        }
+        cout << endl
+             << "Nombre d'entités en jeu : " << Animaux.size() << endl;
+        cout << endl
+             << "Continuer le jeu ?y/n";
+        cin >> tour;
+        cout << endl;
+    }
     // cout << "Loup position: (" << LP.getX() << ", " << LP.getY() << ")" << endl;
     // cout << "Loup attaque: " << LP.getAttaque() << endl;
 
