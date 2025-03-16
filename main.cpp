@@ -23,7 +23,8 @@ char grille[tailleX][tailleY];
 
 vector<Animal *> Animaux; // Vecteur pour stocker l'ensemble des entités crées
 
-void CreationAnimaux() // ne marche pas
+// Création d'une entité basé sur le cdc de TP, et stockage de l'entité dans un vecteur de données
+void CreationAnimaux()
 {
     // Création d'une entité basée sur un nombre random
     for (int i = 0; i < tailleX; i++)
@@ -69,6 +70,15 @@ void CreationAnimaux() // ne marche pas
     }
 }
 
+void deplacementAnimaux() // ne marche pas
+{
+    for (Animal *animal : Animaux)
+    {
+        animal->deplace(tailleX, tailleY);
+        animal->setAttaque();
+    }
+}
+
 // Création grille 10x10
 void Grid()
 {
@@ -103,14 +113,6 @@ void attaqueAnimaux()
         // animal->attaque(&animal);
     }
 }
-void deplacementAnimaux() // ne marche pas
-{
-    for (Animal *animal : Animaux)
-    {
-        animal->deplace(tailleX, tailleY);
-        animal->setAttaque();
-    }
-}
 
 // On actualise la position de chaque entité, et on affiche leur position actuelle par un caractère
 void Deplacement()
@@ -137,18 +139,22 @@ void Deplacement()
     }
 }
 
+//Analyse du plateau -> On vérifie si deux éléments sont à la même position -> Gestion de l'attaque
+// A faire, chaud, pas réussi
+void AnalysePlateau() {
+
+    // Si les coordonnées X,Y d'un élément du vecteur correspondent à un autre élément X, Y du même vecteur...
+    for (Animal *animal : Animaux) {
+        if (Animaux[animal->getX()]) {
+            grille[animal->getX()][animal->getY()] = 'X';   // Test lorsque 2 entités sont sur la même case
+        }
+    }
+}
+
 // On appelle la fonction grid() pour générer le tableau, puis on crée les entités sur le plateau
 // On stocke les informations de chaque animaux dans un vecteur de données
 void initialisationAnimaux()
 {
-    /*
-// Déclaration et initialisation d'un objet Loup
-    Animaux.push_back(new Loup(tailleX, tailleY));
-    Animaux.push_back(new Loup(tailleX, tailleY));
-    Animaux.push_back(new Loup(tailleX, tailleY));
-    Animaux.push_back(new Loup(tailleX, tailleY));
-    */
-
     Grid();
     CreationAnimaux();
 }
@@ -177,7 +183,7 @@ int main()
                 }
             }
             cout << endl
-                 << "Nombre d'entités en jeu : " << Animaux.size() << endl;
+                 << "Nombre d'entités en jeu : " << Animaux.data() << endl;
             cout << endl
                  << "Continuer le jeu ?y/n";
             cin >> tour;
