@@ -23,14 +23,37 @@ char grille[tailleX][tailleY];
 
 vector<Animal *> Animaux;
 
-void CreationAnimaux()  // ne marche pas
+void CreationAnimaux() // ne marche pas
 {
-    // ajout des animaux
+    // Création d'une entité basée sur un nombre random
+    for (int i = 0; i < tailleX; i++)
+    {
+        for (int j = 0; j < tailleY; j++)
+        {
+            if (rand() % 100 <= 25)
+            {
+                int animal = rand() % 3;
+                if (animal == 1)
+                {
+                    Animaux.push_back(new Loup(tailleX, tailleY));
+                }
+                else if (animal == 2)
+                {
+                    Animaux.push_back(new Ours(tailleX, tailleY));
+                }
+                else
+                {
+                    Animaux.push_back(new Pierre(tailleX, tailleY));
+                }
+            }
+        }
+    }
+    // ajout des animaux sur la grille
     for (Animal *animal : Animaux)
     {
-        animal->deplace(tailleX, tailleY);
-        animal->setAttaque();
-        //méthodes pour déterminer le type d'animaux et lui affecter le bon caractère
+        //animal->deplace(tailleX, tailleY);
+        //animal->setAttaque();
+        // méthodes pour déterminer le type d'animaux et lui affecter le bon caractère
         if (typeid(*animal) == typeid(Loup))
         {
             grille[animal->getX()][animal->getY()] = 'L';
@@ -89,6 +112,30 @@ void deplacementAnimaux() // ne marche pas
     }
 }
 
+void Deplacement() {
+    for (Animal *animal : Animaux)
+    {
+        //animal->deplace(tailleX, tailleY);
+        //animal->setAttaque();
+        // méthodes pour déterminer le type d'animaux et lui affecter le bon caractère
+        if (typeid(*animal) == typeid(Loup))
+        {
+            animal->deplace(tailleX, tailleY);
+            grille[animal->getX()][animal->getY()] = 'L';
+        }
+        else if (typeid(*animal) == typeid(Ours))
+        {
+            animal->deplace(tailleX, tailleY);
+            grille[animal->getX()][animal->getY()] = 'O';
+        }
+        else if (typeid(*animal) == typeid(Pierre))
+        {
+            animal->deplace(tailleX, tailleY);
+            grille[animal->getX()][animal->getY()] = 'P';
+        }
+    }
+}
+
 // On appelle la fonction grid() pour générer le tableau, puis on crée les entités sur le plateau
 // On stocke les informations de chaque animaux dans un vecteur de données
 void initialisationAnimaux()
@@ -102,49 +149,25 @@ void initialisationAnimaux()
     */
 
     Grid();
-    for (int i = 0; i < tailleX; i++)
-    {
-        for (int j = 0; j < tailleY; j++)
-        {
-            if (rand() % 100 <= 25)
-            {
-                int animal = rand() % 3;
-                if (animal == 1)
-                {
-                    Animaux.push_back(new Loup(tailleX, tailleY));
-                    // grille[i][j] = 'L';
-                }
-                else if (animal == 2)
-                {
-                    Animaux.push_back(new Ours(tailleX, tailleY));
-                    //grille[i][j] = 'O';
-                }
-                else
-                {
-                    Animaux.push_back(new Pierre(tailleX, tailleY));
-                    //grille[i][j] = 'P';
-                }
-            }
-        }
-    }
+    CreationAnimaux();
 }
 
 int main()
 {
-    char tour;  // Confirmer la fin du jeu ou non
+    char tour;         // Confirmer la fin du jeu ou non
     srand(time(NULL)); // Initialiser le générateur de nombres aléatoires
 
     // Déclaration et initialisation d'un objet Loup
     initialisationAnimaux();
     while (tour != 'n')
     {
-        //Grid();
+        Deplacement();
+        // Grid();
         for (int i = 0; i < tailleX; i++)
         {
             cout << endl;
             for (int j = 0; j < tailleY; j++)
             {
-                
                 cout << "|" << grille[i][j];
             }
         }
