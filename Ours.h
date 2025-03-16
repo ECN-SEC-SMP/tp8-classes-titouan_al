@@ -14,16 +14,18 @@ class Ours : public Animal
 {
 
 private:
-    ; 
+    ;
 
 public:
+    Ours(int maxX, int maxY) : Animal(maxX, maxY) {};
+    Ours(int maxX, int maxY, int a, int b) : Animal(maxX, maxY, a, b) {};
     // Constructeurs
-    void deplace(int maxX, int maxY);      // Déplacement pour un tour
+    void deplace(int maxX, int maxY); // Déplacement pour un tour
 
     // Accesseurs
 
     // Mutateurs
-    void setAttaque();  // Attaque de l'animal -> Random 
+    void setAttaque(); // Attaque de l'animal -> Random
 };
 
 #endif
