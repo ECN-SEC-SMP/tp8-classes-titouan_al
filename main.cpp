@@ -112,17 +112,17 @@ void initialisationAnimaux()
                 if (animal == 1)
                 {
                     Animaux.push_back(new Loup(tailleX, tailleY));
-                    grille[i][j] = 'L';
+                    // grille[i][j] = 'L';
                 }
                 else if (animal == 2)
                 {
                     Animaux.push_back(new Ours(tailleX, tailleY));
-                    grille[i][j] = 'O';
+                    //grille[i][j] = 'O';
                 }
                 else
                 {
                     Animaux.push_back(new Pierre(tailleX, tailleY));
-                    grille[i][j] = 'P';
+                    //grille[i][j] = 'P';
                 }
             }
         }
