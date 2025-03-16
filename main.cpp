@@ -9,7 +9,7 @@
 #include "Attaque.h"
 #include "Animal.h"
 #include "Ours.h"
-#include "Loup.h" // Inclure le fichier d'en-tête Loup
+#include "Loup.h"
 #include "Pierre.h"
 
 using namespace std;
@@ -21,7 +21,7 @@ const int tailleY = 10;
 // Création grille 10x10
 char grille[tailleX][tailleY];
 
-vector<Animal *> Animaux;
+vector<Animal *> Animaux; // Vecteur pour stocker l'ensemble des entités crées
 
 void CreationAnimaux() // ne marche pas
 {
@@ -48,12 +48,12 @@ void CreationAnimaux() // ne marche pas
             }
         }
     }
-    // ajout des animaux sur la grille
+    // Ajout initial des animaux sur la grille
     for (Animal *animal : Animaux)
     {
-        //animal->deplace(tailleX, tailleY);
-        //animal->setAttaque();
-        // méthodes pour déterminer le type d'animaux et lui affecter le bon caractère
+        // animal->deplace(tailleX, tailleY);
+        // animal->setAttaque();
+        //  méthodes pour déterminer le type d'animaux et lui affecter le bon caractère
         if (typeid(*animal) == typeid(Loup))
         {
             grille[animal->getX()][animal->getY()] = 'L';
@@ -112,7 +112,10 @@ void deplacementAnimaux() // ne marche pas
     }
 }
 
-void Deplacement() {
+// On actualise la position de chaque entité, et on affiche leur position actuelle par un caractère
+void Deplacement()
+{
+    Grid();
     for (Animal *animal : Animaux)
     {
         // méthodes pour déterminer le type d'animaux et lui affecter le bon caractère
@@ -157,24 +160,31 @@ int main()
 
     // Déclaration et initialisation d'un objet Loup
     initialisationAnimaux();
-    while (tour != 'n')
+    cout << "Démarrer jeu ?y/n";
+    cin >> tour;
+    if (tour == 'y')
     {
-        Deplacement();
-        // Grid();
-        for (int i = 0; i < tailleX; i++)
+        while (tour != 'n')
         {
-            cout << endl;
-            for (int j = 0; j < tailleY; j++)
+            Deplacement();
+            // Grid();
+            for (int i = 0; i < tailleX; i++)
             {
-                cout << "|" << grille[i][j];
+                cout << endl;
+                for (int j = 0; j < tailleY; j++)
+                {
+                    cout << "|" << grille[i][j];
+                }
             }
+            cout << endl
+                 << "Nombre d'entités en jeu : " << Animaux.size() << endl;
+            cout << endl
+                 << "Continuer le jeu ?y/n";
+            cin >> tour;
+            cout << endl;
         }
-        cout << endl
-             << "Nombre d'entités en jeu : " << Animaux.size() << endl;
-        cout << endl
-             << "Continuer le jeu ?y/n";
-        cin >> tour;
-        cout << endl;
+    } else {
+        cout << "fin." << endl;
     }
     // cout << "Loup position: (" << LP.getX() << ", " << LP.getY() << ")" << endl;
     // cout << "Loup attaque: " << LP.getAttaque() << endl;
