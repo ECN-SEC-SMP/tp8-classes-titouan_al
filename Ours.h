@@ -17,6 +17,8 @@ private:
     ; 
 
 public:
+    Ours(int maxX, int maxY) : Animal(maxX, maxY) {};
+    Ours(int maxX, int maxY, int a, int b) : Animal(maxX, maxY, a, b) {};
     // Constructeurs
     void deplace(int maxX, int maxY);      // Déplacement pour un tour
 
